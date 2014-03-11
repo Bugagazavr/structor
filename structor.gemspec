@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.description   = %q{nested structure validator}
   spec.summary       = %q{Provides a simple DSL to define nested data schemas
 and perform checks generating verbose error messages}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/romankuznietsov/structor"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
