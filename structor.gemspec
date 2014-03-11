@@ -8,8 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Structor::VERSION
   spec.authors       = ["Roman Kuznietsov"]
   spec.email         = ["roman.kuznietsov@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{nested structure validator}
+  spec.summary       = %q{Provides a simple DSL to define nested data schemas
+and perform checks generating verbose error messages}
   spec.homepage      = ""
   spec.license       = "MIT"
 

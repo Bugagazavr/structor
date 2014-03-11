@@ -17,5 +17,9 @@ module Structor
     def check(value)
       @specification.any? { |type| value.is_a?(type) }
     end
+
+    def describe
+      @specification.map(&:name).join('|')
+    end
   end
 end
