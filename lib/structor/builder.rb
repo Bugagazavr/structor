@@ -3,16 +3,16 @@ module Structor
     attr_accessor :nodes
 
     def initialize(&block)
-      @nodes = []
+      @nodes = {}
       instance_eval(&block)
     end
 
     def requires(name, type = :hash, &block)
-      @nodes.push(Node.new(name, type, true, &block))
+      @nodes[name] = Node.new(type, true, &block)
     end
 
     def optional(name, type = :hash, &block)
-      @nodes.push(Node.new(name, type, false, &block))
+      @nodes[name] = Node.new(type, false, &block)
     end
   end
 end

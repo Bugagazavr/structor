@@ -1,12 +1,11 @@
 require "structor/version"
 
+require 'structor/type'
 require 'structor/builder'
 require 'structor/node'
-require 'structor/structure'
-require 'structor/type'
 
 module Structor
   def self.define(&block)
-    Structure.new(&block)
+    Node.new(:hash, true, &block)
   end
 end
