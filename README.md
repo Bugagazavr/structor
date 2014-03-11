@@ -1,24 +1,24 @@
 # Structor
 
-TODO: Write a gem description
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'structor'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install structor
+A simple DSL to define nested data structure schema and perform validations generating verbose error messages.
 
 ## Usage
 
-TODO: Write usage instructions here
+
+    structure = Structor.define do
+      requires :node_1, :boolean             # TrueClass or FalseClass
+      requires 'node_2', :string
+      optional :node_3, :array
+      requires :node_4 do
+        requires :node_5 do
+          requires :node_6, [String, Fixnum] # can be both String and Fixnum
+          optional 7, [Hash, Array]
+        end
+      end
+      optional :node_8, [:hash, Object] do   # inner structure will be checked if node_8 is a Hash
+        requires :node_9, :string            # will not cause error if node_8 is missing
+      end
+    end
 
 ## Contributing
 
