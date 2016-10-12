@@ -14,6 +14,8 @@ module Structor
     def check(structure)
       clear_errors
 
+      return true if empty_structure?(structure) && !required
+
       if @type.check(structure)
         if @children.any? && structure.is_a?(Hash)
           key_set = structure.keys.to_set
@@ -48,6 +50,11 @@ module Structor
     end
 
     private
+
+    def empty_structure?(structure)
+      structure.nil? ||
+        (structure.is_a?(Hash) && @type.check(structure) && structure.empty?)
+    end
 
     def permitted_keys
       @permitted_keys ||= @children.keys.to_set

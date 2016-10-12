@@ -15,6 +15,10 @@ describe Structor do
       optional :node_8, [:hash, Object] do
         requires :node_9, :string
       end
+
+      optional :node_11, [:hash, Object] do
+        requires :node_12
+      end
     end
   end
 
@@ -34,7 +38,8 @@ describe Structor do
       'node_2' => '',
       node_4: { node_5: {
         node_6: '' }},
-        node_8: :symbol }
+        node_8: :symbol,
+      node_11: {}}
   end
 
   let(:invalid_data_1) do
@@ -47,12 +52,12 @@ describe Structor do
   end
 
   it 'check valid data structures' do
-    expect(structure.check(valid_data_1)).to be_true
-    expect(structure.check(valid_data_2)).to be_true
+    expect(structure.check(valid_data_1)).to be_truthy
+    expect(structure.check(valid_data_2)).to be_truthy
   end
 
   it 'returns errors for invalid data' do
-    expect(structure.check(invalid_data_1)).to be_false
+    expect(structure.check(invalid_data_1)).to be_falsey
     expect(structure.errors).to eq([
       'missing keys: ["node_2"]',
       'excess keys: [:node_2]',
@@ -64,7 +69,7 @@ describe Structor do
 
   it 'clears errors from previous check' do
     structure.check(invalid_data_1)
-    expect(structure.check(valid_data_1)).to be_true
+    expect(structure.check(valid_data_1)).to be_truthy
     expect(structure.errors).to be_empty
   end
 end

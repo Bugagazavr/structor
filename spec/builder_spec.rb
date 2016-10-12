@@ -10,6 +10,7 @@ describe Structor::Builder do
         optional :node_5, :number
       end
     end
+
     expect(builder.nodes.size).to eq 3
   end
 end
